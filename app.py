@@ -474,18 +474,25 @@ def get_messages(user_id):
         'created_at': m.created_at.strftime('%Y-%m-%d %H:%M:%S'),
         'sender_nickname': m.sender.nickname
     } for m in messages])
+
+@app.route('/api/suggest/photos', methods=['POST'])
 def photo_suggest():
     files = request.files.getlist('photos')
     location = request.form.get('location')
     city = request.form.get('city')
     user_id = request.form.get('user_id')
 
-    os.makedirs('uploads/photos_pending', exist_ok=True)
+    if not files or not location or not city or not user_id:
+        return jsonify({'error': 'photos, location, city and user_id required'}), 400
+
+    photos_dir = os.path.join(BASE_DIR, 'uploads', 'photos_pending')
+    os.makedirs(photos_dir, exist_ok=True)
 
     for file in files:
         if file and file.filename:
-            filename = f"{user_id}_{int(time.time())}_{file.filename}"
-            file.save(f"uploads/photos_pending/{filename}")
+            ext = os.path.splitext(file.filename)[1] or '.jpg'
+            filename = f"{user_id}_{int(time.time())}_{uuid.uuid4().hex}{ext}"
+            file.save(os.path.join(photos_dir, filename))
 
             photo = SuggestionPhoto(
                 location_title=location,
