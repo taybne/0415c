@@ -22,15 +22,25 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 # ===== APP =====
 app = Flask(__name__, template_folder='templates')
-app.config['SECRET_KEY'] = 'your-secret-key-change-it'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'tag.db')
+#  Config для Render
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-only-local-do-not-use-in-prod')
+
+# Database URI: Render Postgres или локальный SQLite
+db = SQLAlchemy()
+if os.environ.get('DATABASE_URL'):
+    uri = os.environ.get('DATABASE_URL').replace("postgres://", "postgresql://")
+else:
+    uri = 'sqlite:///' + os.path.join(BASE_DIR, 'instance', 'app.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {'pool_pre_ping': True}
+
+db.init_app(app)
 app.config['UPLOAD_FOLDER'] = os.path.join(BASE_DIR, 'uploads')
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=30)
 
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
@@ -663,6 +673,10 @@ def migrate_user_verification_schema():
 def chats():
     return render_template("chats.html")
 
+@app.before_first_request
+def create_tables():
+    db.create_all() 
+    
 # ===== RUN =====
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  
@@ -670,15 +684,13 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
         print("[OK] Database is ready")
-        
-        # Add Moscow if not exists
+
         moscow = City.query.filter_by(slug='moscow').first()
         if not moscow:
             moscow = City(name='Москва', slug='moscow')
             db.session.add(moscow)
             db.session.commit()
         
-        # Add Moscow locations if not exist
         locations_data = [
             {
                 'title': 'Хлебзавод',
