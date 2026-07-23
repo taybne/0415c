@@ -64,147 +64,13 @@
         font-family: -apple-system, system-ui, sans-serif !important;
       }
 
-<<<<<<< HEAD
       .chat-menu {
-=======
-      /* меню/поиск кнопка */
-      .menu-button-container {
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
         position: absolute;
         top: 20px;
         left: 20px;
         z-index: 10;
       }
 
-<<<<<<< HEAD
-=======
-      .menu-button {
-        border: none;
-        background: none;
-        cursor: pointer;
-        font-size: 24px;
-        color: #000;
-        padding: 4px;
-      }
-
-      /* выпадающее меню-иконки под кнопкой ☰ */
-      .menu-icons {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: rgba(0, 0, 0, 0.85);
-        border-radius: 20px;
-        box-shadow: var(--card-shadow);
-        padding: 4px 8px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        margin-top: 8px;
-        z-index: 1000;
-        min-width: 60px;
-      }
-      .menu-icons.hidden {
-        display: none;
-      }
-
-      .menu-icons .icon-btn {
-        border: none;
-        background: none;
-        color: #fff;
-        cursor: pointer;
-        font-size: 24px;
-        padding: 8px 12px;
-        border-radius: 12px;
-        transition: background 0.2s;
-      }
-      .menu-icons .icon-btn:hover {
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      /* выпадающая панель меню */
-      .menu-panel {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.6);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 2000;
-      }
-
-      .menu-panel.visible {
-        display: flex;
-      }
-
-      .menu-panel .panel-content {
-        background: white;
-        width: 90%;
-        max-width: 420px;
-        border-radius: var(--border-radius);
-        padding: 20px;
-      }
-
-      /* tabs no longer shown because chat/search are triggered via icons */
-      .menu-panel .tabs {
-        display: none;
-        gap: 8px;
-        margin-bottom: 16px;
-      }
-
-      .menu-panel .tab {
-        flex: 1 1 0;
-        padding: 8px 12px;
-        border: none;
-        background: #f0f0f0;
-        cursor: pointer;
-        border-radius: 12px;
-        font-weight: 600;
-      }
-
-      .menu-panel .tab.active {
-        background: var(--primary-gradient);
-        color: #fff;
-      }
-
-      .menu-panel .section {
-        display: none;
-      }
-
-      .menu-panel .section.active {
-        display: block;
-      }
-
-      .search-field {
-        width: 100%;
-        padding: 8px 12px;
-        border: 2px solid #e8ecf4;
-        border-radius: 16px;
-        font-size: 16px;
-        margin-bottom: 8px;
-      }
-
-      .search-result,
-      .chat-item {
-        padding: 10px 12px;
-        border-bottom: 1px solid #ddd;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .search-result .action-btn,
-      .chat-item .action-btn {
-        padding: 4px 8px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        background: var(--primary-gradient);
-        color: #fff;
-        font-size: 14px;
-      }
-
-      /* ===== ПРОФИЛЬ ===== */
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
       .profile-menu {
         position: absolute;
         top: 20px;
@@ -256,7 +122,6 @@
         border-radius: 20px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        color: #000 !important; /* explicit black text to override browser accent color */
       }
 
       .themes-dropdown {
@@ -299,14 +164,9 @@
       }
 
       .theme-chip:hover {
-<<<<<<< HEAD
         background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(15px);
         color: #ffffff !important;
-=======
-        background: #e3f2fd;
-        color: #000000 !important;
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
         transform: translateY(-1px);
       }
 
@@ -333,7 +193,6 @@
         border-radius: 20px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        color: #000 !important; /* explicit color */
       }
 
       .cities-button:focus {
@@ -420,6 +279,22 @@
         color: #ebebeb;
       }
 
+      .secret-place-mark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        margin-left: 6px;
+        border-radius: 50%;
+        color: #ffb6d9;
+        border: 1px solid rgba(255, 182, 217, 0.45);
+        background: rgba(255, 182, 217, 0.08);
+        font-size: 13px;
+        line-height: 1;
+        vertical-align: 2px;
+      }
+
       .place-card-desc {
         font-size: 16px;
         color: #585858;
@@ -428,38 +303,6 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-      }
-
-      .card-theme-list {
-        margin-top: 8px;
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
-
-      .card-theme-chip {
-        font-size: 12px;
-        padding: 4px 8px;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.03);
-        color: #dcdcdc;
-        border: 1px solid rgba(255, 255, 255, 0.03);
-      }
-
-      .card-theme-list {
-        margin-top: 8px;
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
-
-      .card-theme-chip {
-        font-size: 12px;
-        padding: 4px 8px;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.04);
-        color: #dcdcdc;
-        border: 1px solid rgba(255, 255, 255, 0.03);
       }
 
       .card-theme-list {
@@ -545,10 +388,6 @@
 
       .modal.hidden {
         display: none;
-      }
-      /* generic utility class for hiding elements */
-      .hidden {
-        display: none !important;
       }
 
       .modal-content {
@@ -747,6 +586,68 @@
         align-items: center;
         gap: 16px;
         padding: 20px 0;
+      }
+
+      .secret-eye-btn {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        width: 54px;
+        height: 38px;
+        border: none;
+        background: transparent;
+        opacity: 0.62;
+        cursor: pointer;
+        padding: 0;
+        z-index: 25;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .secret-eye-btn:hover,
+      .secret-eye-btn.unlocked {
+        opacity: 0.95;
+        transform: scale(1.04);
+      }
+
+      .secret-eye-shape {
+        position: absolute;
+        inset: 5px 2px;
+        border: 2.5px solid rgba(255, 182, 217, 0.96);
+        border-radius: 50% 50% 50% 50% / 70% 70% 70% 70%;
+        box-shadow: 0 0 16px rgba(255, 32, 168, 0.48);
+        transform: rotate(-8deg);
+      }
+
+      .secret-eye-pupil {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: rgba(255, 182, 217, 0.95);
+        box-shadow: 0 0 16px rgba(255, 32, 168, 0.8);
+        transform: translate(-50%, -50%);
+      }
+
+      .secret-flash {
+        position: fixed;
+        inset: 0;
+        z-index: 5000;
+        pointer-events: none;
+        opacity: 0;
+        background:
+          radial-gradient(circle at center, rgba(255, 255, 255, 0.96) 0%, rgba(255, 57, 181, 0.88) 22%, rgba(255, 0, 153, 0.4) 54%, transparent 76%);
+      }
+
+      .secret-flash.active {
+        animation: secretFlash 1s ease-out forwards;
+      }
+
+      @keyframes secretFlash {
+        0% { opacity: 0; }
+        16% { opacity: 1; }
+        100% { opacity: 0; }
       }
 
       .profile-info {
@@ -948,18 +849,13 @@
       }
 
       #placeMap .leaflet-popup-content-wrapper {
-        background: rgba(255, 244, 247, 0.95) !important;
-        color: #000000 !important;
-        border-radius: 10px !important;
-        border: 1px solid rgba(180, 126, 145, 0.35) !important;
-      }
-
-      #placeMap .leaflet-popup-content-wrapper .leaflet-popup-content {
-        color: #000000 !important;
+        background: #333 !important;
+        color: #fff !important;
+        border-radius: 8px !important;
       }
 
       #placeMap .leaflet-popup-tip {
-        background: rgba(255, 244, 247, 0.95) !important;
+        background: #333 !important;
       }
       .place-close-btn {
         width: 100%;
@@ -1284,30 +1180,6 @@
         display: block;
       }
 
-      .space-game {
-        width: 100%;
-        min-height: 320px;
-        border-radius: 18px;
-        overflow: hidden;
-        background: #020203;
-        border: 1px solid rgba(255, 182, 217, 0.18);
-      }
-
-      .space-video {
-        display: block;
-        width: 100%;
-        height: min(62vh, 520px);
-        object-fit: cover;
-        background: #020203;
-      }
-
-      .space-video:fullscreen {
-        width: 100vw;
-        height: 100vh;
-        object-fit: contain;
-        background: #000;
-      }
-
       .rat-den-stage {
         position: relative;
         min-height: 320px;
@@ -1464,98 +1336,6 @@
 
       .game-tray.active {
         display: block;
-      }
-
-      .study-game {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-
-      .study-progress {
-        height: 8px;
-        overflow: hidden;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      .study-progress-bar {
-        height: 100%;
-        width: var(--study-progress, 0%);
-        border-radius: inherit;
-        background: linear-gradient(90deg, #34d399, #60a5fa);
-        transition: width 0.25s ease;
-      }
-
-      .study-prompt {
-        display: grid;
-        gap: 8px;
-        padding: 18px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.06);
-        text-align: center;
-      }
-
-      .study-hanzi {
-        color: #fff;
-        font-size: 42px;
-        font-weight: 800;
-        line-height: 1;
-      }
-
-      .study-pinyin {
-        color: #93c5fd;
-        font-size: 15px;
-        font-weight: 700;
-      }
-
-      .study-meaning {
-        color: #d1d5db;
-        font-size: 13px;
-      }
-
-      .study-options {
-        display: grid;
-        gap: 10px;
-      }
-
-      .study-option {
-        min-height: 48px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.08);
-        color: #fff;
-        font-size: 15px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-      }
-
-      .study-option:hover {
-        transform: translateY(-1px);
-        background: rgba(255, 255, 255, 0.12);
-      }
-
-      .study-option.correct {
-        border-color: rgba(52, 211, 153, 0.8);
-        background: rgba(52, 211, 153, 0.2);
-      }
-
-      .study-option.wrong {
-        border-color: rgba(248, 113, 113, 0.85);
-        background: rgba(248, 113, 113, 0.18);
-      }
-
-      .study-option:disabled {
-        cursor: default;
-      }
-
-      .study-note {
-        min-height: 38px;
-        color: #d1d5db;
-        font-size: 13px;
-        line-height: 1.4;
       }
 
       .block-tray {
@@ -1802,7 +1582,7 @@
 
       .map-view-header h2 {
         margin: 0;
-        color: #202020;
+        color: #fff;
         font-size: 20px;
         font-weight: 700;
       }
@@ -1810,7 +1590,7 @@
       .map-close-btn {
         background: none;
         border: none;
-        color: #2f2f2f;
+        color: #fff;
         font-size: 24px;
         cursor: pointer;
         padding: 8px;
@@ -1840,30 +1620,19 @@
       }
 
       #mapViewContainer .leaflet-control-attribution {
-        background: rgba(255, 250, 252, 0.88) !important;
-        color: #6d4353 !important;
+        background: rgba(0, 0, 0, 0.7) !important;
+        color: #999 !important;
         font-size: 10px !important;
       }
 
       #mapViewContainer .leaflet-popup-content-wrapper {
-        background: rgba(255, 244, 247, 0.95) !important;
-        color: #000000 !important;
-        border-radius: 14px !important;
-        border: 1px solid rgba(180, 126, 145, 0.35) !important;
-        box-shadow: 0 14px 40px rgba(170, 117, 140, 0.18) !important;
-        font-family: Inter, system-ui, sans-serif !important;
-      }
-
-      #mapViewContainer .leaflet-popup-content-wrapper .leaflet-popup-content {
-        font-size: 14px !important;
-        line-height: 1.6 !important;
-        letter-spacing: 0.01em !important;
-        font-weight: 600 !important;
-        color: #000000 !important;
+        background: #333 !important;
+        color: #fff !important;
+        border-radius: 8px !important;
       }
 
       #mapViewContainer .leaflet-popup-tip {
-        background: rgba(255, 244, 247, 0.95) !important;
+        background: #333 !important;
       }
 
       .leaflet-control-zoom {
@@ -1888,10 +1657,6 @@
       .leaflet-control-zoom-out:hover {
         background: #3a3a3a !important;
       }
-      .leaflet-control-zoom-in:hover,
-      .leaflet-control-zoom-out:hover {
-        background: #3a3a3a !important;
-      }
     </style>
   </head>
   <body
@@ -1900,44 +1665,6 @@
   >
     <div class="app">
       <header class="header">
-<<<<<<< HEAD
-=======
-        <!-- меню/поиск в левом углу -->
-        <div class="menu-button-container">
-          <button id="menuBtn" class="menu-button">☰</button>
-          <!-- вертикальная тёмная плашка с иконками -->
-          <div id="menuIcons" class="menu-icons hidden">
-            <button id="chatIconBtn" class="icon-btn" title="Чаты">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="24"
-                height="24"
-              >
-                <path
-                  d="M4 4h16v12H5.17L4 17.17V4zm0-2a2 2 0 0 0-2 2v15l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4z"
-                />
-              </svg>
-            </button>
-            <button id="searchIconBtn" class="icon-btn" title="Поиск">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="24"
-                height="24"
-              >
-                <path
-                  d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C8.01 14 6 11.99 6 9.5S8.01 5 10.5 5 15 7.01 15 9.5 12.99 14 10.5 14z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <!-- Заголовок сверху по центру -->
-        <h1>TAG</h1>
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
 
         <button class="burger-menu-btn" id="burgerMenuBtn">
           <span></span>
@@ -1967,9 +1694,8 @@
               </button>
               <button class="theme-chip" data-theme="yum">Yum</button>
               <button class="theme-chip" data-theme="leisure">Leisure</button>
-              <button class="theme-chip" data-theme="bars">Бары</button>
-              <button class="theme-chip" data-theme="veranda">Веранды</button>
-              <button class="theme-chip" data-theme="niche">Нишевое</button>
+              <button class="theme-chip" data-theme="нишевые">Нишевые</button>
+              <button class="theme-chip" data-theme="бары">Бары</button>
             </div>
           </div>
 
@@ -1981,7 +1707,8 @@
               </button>
               <button class="city-chip" data-city="moscow">Москва</button>
               <button class="city-chip" data-city="spb">Санкт-Петербург</button>
-              <button class="city-chip" data-city="beijing">Пекин</button>
+              <button class="city-chip" data-city="china-beijing">China-beijing</button>
+              <button class="city-chip" data-city="china-zhangjiajie">China-zhangjiajie</button>
               <button class="city-chip add-city" data-city="add">
                 ➕ Добавить город
               </button>
@@ -1990,7 +1717,6 @@
         </div>
       </header>
 
-<<<<<<< HEAD
       <div class="burger-menu" id="burgerMenu">
         <div class="burger-menu-content">
           <button class="burger-menu-item" id="suggestBtn">
@@ -2004,44 +1730,6 @@
           </button>
           <button class="burger-menu-item" id="favoritesBtn">
             ⭐ Favorites
-=======
-      <!-- меню чатов / поиск пользователей -->
-      <div id="menuPanel" class="menu-panel">
-        <div class="panel-content">
-          <div class="tabs">
-            <button id="tabChats" class="tab active">Чаты</button>
-            <button id="tabSearch" class="tab">Поиск</button>
-          </div>
-          <div id="chatsSection" class="section active">
-            <div id="chatsList">
-              <p>Нет чатов</p>
-            </div>
-          </div>
-          <div id="searchSection" class="section">
-            <div style="display: flex; gap: 4px; align-items: center">
-              <input
-                type="text"
-                id="userSearchInput"
-                class="search-field"
-                placeholder="Найти по нику"
-              />
-              <button
-                id="userSearchBtn"
-                class="btn secondary"
-                style="padding: 8px"
-              >
-                🔍
-              </button>
-            </div>
-            <div id="searchResults"></div>
-          </div>
-          <button
-            id="closeMenuBtn"
-            class="btn secondary"
-            style="margin-top: 12px"
-          >
-            Закрыть
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
           </button>
         </div>
       </div>
@@ -2054,10 +1742,11 @@
 
       <div id="profileModal" class="modal hidden">
         <div class="modal-content">
-<<<<<<< HEAD
+          <button id="secretEyeBtn" class="secret-eye-btn" type="button" aria-label="Unlock hidden locations">
+            <span class="secret-eye-shape"></span>
+            <span class="secret-eye-pupil"></span>
+          </button>
           <button class="modal-close-btn" id="profileCloseBtn">✕</button>
-=======
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
           <h2></h2>
           <div class="profile-card">
             <label for="avatarInput" class="avatar-upload">
@@ -2124,6 +1813,8 @@
         </div>
       </div>
 
+      <div id="secretFlash" class="secret-flash"></div>
+
       <div id="suggestModal" class="modal hidden">
         <div class="modal-content">
           <h2>➕ Новый город</h2>
@@ -2155,7 +1846,6 @@
                 <option value="novosibirsk">Новосибирск</option>
                 <option value="moscow">Москва</option>
                 <option value="spb">Санкт-Петербург</option>
-                <option value="beijing">Пекин</option>
               </select>
             </div>
           </label>
@@ -2209,11 +1899,10 @@
                 <input type="checkbox" class="theme-select" value="yum" /> Yum
               </label>
               <label style="display: flex; align-items: center; gap: 6px">
-<<<<<<< HEAD
-                <input type="checkbox" class="theme-select" value="bars" /> Бары
+                <input type="checkbox" class="theme-select" value="нишевые" /> Нишевые
               </label>
               <label style="display: flex; align-items: center; gap: 6px">
-                <input type="checkbox" class="theme-select" value="niche" /> Нишевое
+                <input type="checkbox" class="theme-select" value="бары" /> Бары
               </label>
             </div>
             <div
@@ -2245,18 +1934,6 @@
                   "
                 />
               </label>
-=======
-                <input type="checkbox" id="themeOtherCheckbox" value="other" />
-                Другое
-              </label>
-              <input
-                type="text"
-                id="themeOtherInput"
-                placeholder="Укажите тему"
-                class="hidden"
-                style="width: 100%; margin-top: 4px"
-              />
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
             </div>
           </label>
           <div class="modal-actions">
@@ -2325,16 +2002,14 @@
           </div>
           <div class="game-tabs">
             <button class="game-tab active" data-game="ratDen">Rat Den</button>
-            <button class="game-tab" data-game="space">Space</button>
             <button class="game-tab" data-game="blockBlast">Block Blast</button>
             <button class="game-tab" data-game="sudoku">Sudoku</button>
-            <button class="game-tab" data-game="studyChinese">Study</button>
           </div>
           <div class="game-card">
             <div class="game-card-header">
               <div>
                 <h3 id="gameTitle">Rat Den</h3>
-                <p id="gameDesc">Blackout den with falling 6/9 code. Tap the rat before it vanishes.</p>
+                <p id="gameDesc"> </p>
               </div>
               <div class="game-stats">
                 <span><span class="game-stat-label" id="gameStatLabel">Caught</span><strong id="gameScore">0</strong></span>
@@ -2392,6 +2067,7 @@
       }
 
       let favoritesSet = new Set();
+      let secretUnlocked = localStorage.getItem("secretLocationsUnlocked") === "true";
 
       async function loadFavorites() {
         try {
@@ -2468,9 +2144,21 @@
       const mapNavBtn = document.getElementById("mapNavBtn");
       const profileModal = document.getElementById("profileModal");
       const profileAvatar = document.getElementById("profileAvatar");
+      const secretEyeBtn = document.getElementById("secretEyeBtn");
       const favoritesBtn = document.getElementById("favoritesBtn");
       const burgerMenu = document.getElementById("burgerMenu");
       const gamesBtn = document.getElementById("gamesBtn");
+
+      if (secretUnlocked && secretEyeBtn) {
+        secretEyeBtn.classList.add("unlocked");
+      }
+
+      if (secretEyeBtn) {
+        secretEyeBtn.onclick = (event) => {
+          event.stopPropagation();
+          toggleSecretLocations();
+        };
+      }
 
       async function showFavorites() {
         closeMapView();
@@ -2550,7 +2238,8 @@
           novosibirsk: "Novosibirsk",
           moscow: "Moscow",
           spb: "Saint Petersburg",
-          beijing: "Beijing",
+          "china-beijing": "China-beijing",
+          "china-zhangjiajie": "China-zhangjiajie",
         };
         document.getElementById("mapViewTitle").textContent =
           "Map - " + (cityNames[currentCity] || "City");
@@ -2574,7 +2263,8 @@
               novosibirsk: [55.0415, 82.9346],
               moscow: [55.7558, 37.6173],
               spb: [59.9311, 30.3609],
-              beijing: [39.9042, 116.4074],
+              "china-beijing": [39.9042, 116.4074],
+              "china-zhangjiajie": [29.1170, 110.4799],
             };
 
             const centerCoords = cityCoordinates[currentCity] || [55.0415, 82.9346];
@@ -2591,13 +2281,13 @@
             ).addTo(mapViewInstance);
 
             // Add markers for all locations in current city
-            const places = placesData[currentCity] || [];
+            const places = getVisiblePlaces(currentCity);
             places.forEach((place) => {
               if (place.coords) {
                 L.marker(place.coords)
                   .addTo(mapViewInstance)
                   .bindPopup(
-                    `<div style="color: #fff; font-weight: 600;">${place.title}</div><div style="color: #ccc; font-size: 12px;">${place.desc}</div>`,
+                    `<div style="color: #fff; font-weight: 600;">${place.title}${isSecretPlace(place) ? ' ¿' : ''}</div><div style="color: #ccc; font-size: 12px;">${place.desc}</div>`,
                   );
               }
             });
@@ -2873,18 +2563,12 @@
       };
 
       const placesData = {
-        beijing: [],
         moscow: [
           {
             title: "Хлебозавод № 9",
-<<<<<<< HEAD
             desc: "...и дизайн завод /Новодмитровская улица, 1 ст1",
             themes: ["culture", "for-photos"],
             coords: [55.7518, 37.6255],
-=======
-            desc: "Культурный центр",
-            themes: ["culture", "for-photos"],
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
             photos: [
               "/static/photos/moscow/hlebz2.jpg",
               "/static/photos/moscow/hlebz3.jpg",
@@ -2894,18 +2578,6 @@
               "/static/photos/moscow/hlebz6.png",
               "/static/photos/moscow/hlebz7.png",
               "/static/photos/moscow/hlebz8.png",
-            ],
-          },
-          {
-            title: "Lovin",
-            desc: "Кривоколенный пер., 3, Москва — смэш-бургерная у Лубянки с дайнер-настроением, бургерами, фри и милкшейками.",
-            themes: ["restaurant", "yum", "popular"],
-            coords: [55.7626, 37.6363],
-            photos: [
-              "/static/photos/moscow/lovin.png",
-              "/static/photos/moscow/lovin2.png",
-              "/static/photos/moscow/lovin3.png",
-              "/static/photos/moscow/lovin4.png",
             ],
           },
           {
@@ -2920,13 +2592,13 @@
               "/static/photos/moscow/nabber4.jpg",
               "/static/photos/moscow/nabber5.jpg",
               "/static/photos/moscow/nabber6.jpg",
-              "/static/photos/moscow/nabber7.png",
+              "/static/photos/moscow/nabber7.jpg",
               "/static/photos/moscow/nabber8.jpg",
               "/static/photos/moscow/nabber9.jpg",
             ],
           },
          {
-            title: "ресторан SIXTY",
+            title: "SIXTY",
             desc: "один из самых высоких ресторанов в Европе",
             themes: ["restaurant", "yum", "for photos"],
             coords: [55.7492, 37.5286],
@@ -2951,6 +2623,41 @@
             ],
           },
           {
+            title: "La Virgen",
+            desc: "Лубянский пр-д, 5с1",
+            themes: ["restaurant", "yum"],
+            coords: [55.7492, 37.5286],
+            photos: [
+              "/static/photos/moscow/v1.png",
+              "/static/photos/moscow/v2.png",
+              "/static/photos/moscow/v3.png",
+              "/static/photos/moscow/v4.png",
+              "/static/photos/moscow/v5.png",
+              "/static/photos/moscow/v6.png",
+              "/static/photos/moscow/v7.png",
+              "/static/photos/moscow/v8.png",
+              "/static/photos/moscow/v9.png",
+              "/static/photos/moscow/v10.png",
+            ],
+          },
+          {
+            title: "чайная дом белого журавля",
+            desc: "",
+            themes: ["restaurant", "yum", "leisure"],
+            coords: [55.7492, 37.5286],
+            photos: [
+              "/static/photos/moscow/c1.png",
+              "/static/photos/moscow/c2.png",
+              "/static/photos/moscow/c3.png",
+              "/static/photos/moscow/c4.jpg",
+              "/static/photos/moscow/c5.png",
+              "/static/photos/moscow/c6.jpg",
+              "/static/photos/moscow/c7.jpg",
+              "/static/photos/moscow/c8.png",
+              "/static/photos/moscow/c9.jpg",
+            ],
+          },
+          {
             title: "Завод Арма",
             desc: "Адрес: Нижний Сусальный переулок, 5 (метро «Курская», «Чкаловская",
             themes: ["leisure"],
@@ -2962,41 +2669,11 @@
             ],
           },
           {
-            title: "Хуамин парк",
-            desc: ".",
-            themes: ["leisure", "for-photos"],
-            coords: [55.7600, 37.6200],
-            photos: [
-              "/static/photos/moscow/хуамин1.png",
-              "/static/photos/moscow/хуамин2.png",
-            ],
-          },
-          {
-            title: "Презервативная",
-            desc: "",
-            themes: ["secret", "bars", "niche"],
-            coords: [55.7560, 37.6230],
-            photos: [
-              "/static/photos/moscow/prv.jpg",
-              "/static/photos/moscow/prv2.jpg",
-            ],
-            secret: true,
-          },
-          {
-            title: "Tangiers Lounge Typography",
-            desc: "Москва — уютный бар с атмосферой и верандой для вечерних встреч.",
-            themes: ["bars", "veranda", "popular"],
-            coords: [55.7607, 37.6298],
-            photos: [
-              "/static/photos/moscow/tlt.png",
-              "/static/photos/moscow/tlt2.png",
-            ],
-          },
-          {
             title: "Neighborhood Bar",
-            desc: "Мясницкая ул., 14/2с1, Москва — скрытый бар с винтажной атмосферой.",
-            themes: ["secret", "bars", "popular"],
-            coords: [55.7713, 37.6548],
+            desc: "Мясницкая улица, 14/2с1",
+            themes: ["restaurant", "yum", "leisure"],
+            coords: [55.7621, 37.6357],
+            secret: true,
             photos: [
               "/static/photos/moscow/nbh.webp",
               "/static/photos/moscow/nbh1.webp",
@@ -3007,20 +2684,34 @@
               "/static/photos/moscow/nbhd2.webp",
               "/static/photos/moscow/nbhd4.webp",
             ],
+          },
+          {
+            title: "Презервативная",
+            desc: "Мясницкая ул., 16",
+            themes: ["culture", "for-photos"],
+            coords: [55.7626, 37.6361],
             secret: true,
+            photos: [
+              "/static/photos/moscow/prv.jpg",
+              "/static/photos/moscow/prv2.jpg",
+            ],
+          },
+          {
+            title: "Skuratov Coffee",
+            desc: "Мясницкая, 13 стр.2",
+            themes: ["yum", "popular"],
+            coords: [55.7623, 37.6352],
+            photos: [
+              "/static/photos/skuratov.svg",
+            ],
           },
         ],
         spb: [
           {
             title: "Анненкирхе",
-<<<<<<< HEAD
             desc: "Кирочная улица, 8 лит В  Анненкирхе (от нем. Annenkirche, Annen — Анна, kirche — церковь ) — лютеранская церковь Святой Анны в Санкт-Петербурге с 300-летней историей, которая меняет традиционные представления о храмах. кирха превратилась в культурное место, куда можно прийти не только на богослужение, но и на живой оркестровый концерт или выставку. /искусство/ христианский мерч/ Церковь, в которую хочется возвращаться",
             themes: ["culture"],
             coords: [59.9447, 30.3519],
-=======
-            desc: "Лютеранская церковь",
-            themes: ["culture"],
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
             photos: [
               "/static/photos/spb/annen1.jpg",
               "/static/photos/spb/annen2.jpg",
@@ -3028,15 +2719,9 @@
               "/static/photos/spb/annen4.jpg",
               "/static/photos/spb/annen5.jpg",
               "/static/photos/spb/annen6.jpg",
-              "/static/photos/spb/annen7.jpg",
-              "/static/photos/spb/annen8.jpg",
-              "/static/photos/spb/annen9.jpg",
-              "/static/photos/spb/annen10.jpg",
-              "/static/photos/spb/annen11.jpg",
             ],
           },
           {
-<<<<<<< HEAD
             title: "Бертгольд центр",
             desc: "Гражданская улица, 13-15",
             themes: ["popular", "culture", "for-photos", "restaurant", "yum"],
@@ -3076,14 +2761,6 @@
               "/static/photos/spb/vkz12.jpg",
               "/static/photos/spb/vkz13.png",
               "/static/photos/spb/vkz14.jpg",
-=======
-            title: "Исаакиевский собор",
-            desc: "Вид с колоннады",
-            themes: ["culture"],
-            photos: [
-              "https://via.placeholder.com/400x250/45b7d1/fff?text=Исаакий+1",
-              "https://via.placeholder.com/400x250/2980b9/fff?text=Исаакий+2",
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
             ],
           },
           {
@@ -3131,7 +2808,6 @@
               "/static/photos/spb/ng11.png",
               "/static/photos/spb/ng12.jpg",
               "/static/photos/spb/ng13.png",
-              "/static/photos/spb/ng14.jpg",
             ],
           },
           {
@@ -3146,8 +2822,31 @@
               "/static/photos/spb/sc4.jpg",
               "/static/photos/spb/sc5.jpg",
               "/static/photos/spb/sc6.jpg",
-              "/static/photos/spb/sc7.jpg",
-              "/static/photos/spb/sc8.png",
+            ],
+          },
+          {
+            title: "Humbl Cookies",
+            desc: " Лиговский проспект, 58  *  Ломоносова, ул. 12/66  *  Ефимова, 2  *  Грибоедова, ул. 23  *  наб. Обводного канала, 118С   ",
+            themes: ["food", "popular", "yum"],
+            coords: [59.928122, 30.33732],
+            photos: [
+              "/static/photos/spb/humble1.jpg",
+              "/static/photos/spb/humble2.jpg",
+              "/static/photos/spb/humble3.jpg",
+              "/static/photos/spb/hembl4.jpg",
+            ],
+          },
+          {
+            title: "The Buddy Cafe",
+            desc: " Ломоносова, 12/66  ",
+            themes: ["food", "popular", "leisure"],
+            coords: [59.928122, 30.33732],
+            photos: [
+              "/static/photos/spb/tb.jpg",
+            "/static/photos/spb/tbad.jpg",
+            "/static/photos/spb/tbad2.jpg",
+            "/static/photos/spb/tbad3.jpg",
+            "/static/photos/spb/tb.png",
             ],
           },
           {
@@ -3161,61 +2860,21 @@
             ],
           },
           {
-            title: "Humbl Cookies",
-            desc: "..",
-            themes: ["food", "popular", "yum"],
-            coords: [59.9400, 30.3290],
-            photos: [
-              "/static/photos/spb/humble1.jpg",
-              "/static/photos/spb/humble2.jpg",
-              "/static/photos/spb/humble3.jpg",
-              "/static/photos/spb/hembl4.jpg",
-              "/static/photos/spb/humble4.jpg",
-            ],
-          },
-          {
-            title: "Малатан",
-            desc: "Санкт-Петербург — уютное место для вкусной еды и расслабленного вечера.",
-            themes: ["restaurant", "yum", "popular"],
-            coords: [59.9344, 30.3125],
-            photos: [
-              "/static/photos/spb/mltn.png",
-              "/static/photos/spb/mltn2.png",
-              "/static/photos/spb/mltn3.png",
-            ],
-          },
-          {
-            title: "The Buddy Cafe",
-            desc: "...",
-            themes: ["food", "popular", "leisure"],
-            coords: [59.9375, 30.3320],
-            photos: [
-              "/static/photos/spb/tb.jpg",
-              "/static/photos/spb/tb.png",
-              "/static/photos/spb/tbad.jpg",
-              "/static/photos/spb/tbad2.jpg",
-              "/static/photos/spb/tbad3.jpg",
-            ],
-          },
-          {
             title: "Skuratov Coffee",
-            desc: "/",
-            themes: ["food", "popular", "for-photos"],
-            coords: [59.9385, 30.3185],
-            photos: ["/static/photos/skuratov.svg"],
+            desc: "Малая Посадская, 4а",
+            themes: ["yum", "popular"],
+            coords: [59.9583, 30.3198],
+            photos: [
+              "/static/photos/skuratov.svg",
+            ],
           },
         ],
         novosibirsk: [
           {
             title: "Shredder Pizza",
-<<<<<<< HEAD
             desc: "Коммунистическая улица, 45",
             themes: ["yum", "popular"],
             coords: [55.0388, 82.9297],
-=======
-            desc: "Пиццерия",
-            themes: ["yum", "popular"],
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
             photos: [
               "/static/photos/novosibirsk/shpizza1.jpg",
               "/static/photos/novosibirsk/shpizza2.jpg",
@@ -3223,29 +2882,12 @@
             ],
           },
           {
-<<<<<<< HEAD
-            title: "Raccoon Cafe",
-            desc: "ул. Галущака, 4",
-            themes: ["popular", "leisure", "yum"],
-            coords: [55.0250, 82.8920],
+            title: "Nobody Knows i Suppose",
+            desc: "Вдохновлённый портовыми плацдармами Лиссабона бар с авторской кухней, креплеными винами и атмосферой винилового проигрывателя.",
+            themes: ["нишевые", "бары"],
+            coords: [55.0290, 82.9210],
             photos: [
-              "/static/photos/novosibirsk/enot1.jpg",
-              "/static/photos/novosibirsk/enot2.jpg",
-              "/static/photos/novosibirsk/enot3.jpg",
-              "/static/photos/novosibirsk/enot4.jpg",
-=======
-            title: "Harucha",
-            desc: "bubble tea bar",
-            themes: ["popular"],
-            photos: [
-              "/static/photos/novosibirsk/haruf.jpg",
-              "/static/photos/novosibirsk/haru2.jpg",
-              "/static/photos/novosibirsk/haru1.png",
-              "/static/photos/novosibirsk/haru4.jpg",
-              "/static/photos/novosibirsk/haru3.jpg",
-              "/static/photos/novosibirsk/haru5.jpg",
-              "/static/photos/novosibirsk/haru.png",
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
+              "/static/photos/novosibirsk/nbk.jpg",
             ],
           },
           {
@@ -3264,30 +2906,6 @@
             ],
           },
           {
-            title: "Nobody Knows I Suppose",
-            desc: "Вдохновленный закоулками портового Лиссабона, бар Nobody Knows I Suppose спрятан в одной из подворотен Новосибирска. Простая формула из портвейна, смешанных напитков и винила, где меню разрабатывается заново каждую неделю: пять коктейлей и 2 блюда. Вечера в Nobody – это истории со всех уголков мира, это приятный хруст винилового проигрывателя, это крепленые вина всех сортов и, конечно, смешанные напитки мирового класса. Интерьер Nobody Knows I Suppose напоминает портовый бар: морские приборы, столы в виде бочек, ящики с транспортными маркировками и корабельные канаты. Меньше блеска-больше гаражной атмосферы.",
-            themes: ["bars", "niche", "popular"],
-            coords: [55.0308, 82.9210],
-            photos: ["/static/photos/novosibirsk/nbk.jpg"],
-          },
-          {
-            title: "Оперный театр",
-<<<<<<< HEAD
-            desc: "Красный проспект, 36",
-            themes: ["culture"],
-            coords: [55.0079, 82.8952],
-=======
-            desc: "Рекорд Гиннесса",
-            themes: ["culture"],
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
-            photos: [
-              "/static/photos/novosibirsk/н1.jpg",
-              "/static/photos/novosibirsk/н2.jpg",
-              "/static/photos/novosibirsk/н3.jpg",
-            ],
-          },
-<<<<<<< HEAD
-          {
             title: "Дворик Рукс",
             desc: "коммунистическая улица, 45",
             themes: ["yum", "popular", "for-photos"],
@@ -3302,6 +2920,62 @@
             ],
           },
           {
+            title: "Raccoon Cafe",
+            desc: "ул. Галущака, 4",
+            themes: ["popular", "leisure"],
+            coords: [55.0250, 82.8920],
+            photos: [
+              "/static/photos/novosibirsk/enot1.jpg",
+              "/static/photos/novosibirsk/enot2.jpg",
+              "/static/photos/novosibirsk/enot3.jpg",
+              "/static/photos/novosibirsk/enot4.jpg",
+            ],
+          },
+          {
+          title: "аджикинежаль",
+            desc: "//грузинский ресторан/ Пл.Карла Маркса, 1/1| Красный проспект, 157/1| красный проспект 37| Ватутина, 107| Ильича, 6",
+            themes: ["yum", "restaurant"],
+            coords: [55.0150, 82.8950],
+            photos: [
+              "/static/photos/novosibirsk/Akm3.jpg",
+              "/static/photos/novosibirsk/Akm1.jpg",
+              "/static/photos/novosibirsk/Akm2.jpg",
+              "/static/photos/novosibirsk/Akm4.jpg",
+              "/static/photos/novosibirsk/Akm5.jpg",
+              "/static/photos/novosibirsk/Akm6.jpg",
+              "/static/photos/novosibirsk/Akr37.jpg",
+              "/static/photos/novosibirsk/Akr37.2.jpg",
+              "/static/photos/novosibirsk/Akr37.3.jpg",
+              "/static/photos/novosibirsk/Akr37.4.jpg",
+              "/static/photos/novosibirsk/Akr157.jpg",
+              "/static/photos/novosibirsk/Akr157.2.jpg",
+              "/static/photos/novosibirsk/Av107.jpg",
+              "/static/photos/novosibirsk/Av107.2.jpg",
+              "/static/photos/novosibirsk/Ai6.jpg",
+              "/static/photos/novosibirsk/Ai6.2.jpg",
+            ],
+          }, 
+          {
+          title: "sabai",
+            desc: "///Щетинкина, 18; Перевозчикова, 4; Академгородок: ул. Инженерная, 7",
+            themes: ["yum", "restaurant"],
+            coords: [55.060663, 82.908949],  
+            photos: [
+              "/static/photos/novosibirsk/sabai.jpg",
+              "/static/photos/novosibirsk/sabai2.jpg",
+              "/static/photos/novosibirsk/sabai3.jpg",
+              "/static/photos/novosibirsk/sabai4.jpg",
+              "/static/photos/novosibirsk/sabai5.jpg",
+              "/static/photos/novosibirsk/sabai6.jpg",
+              "/static/photos/novosibirsk/sabai7.jpg",
+              "/static/photos/novosibirsk/sabai8.jpg",
+              "/static/photos/novosibirsk/sabai9.jpg",
+              "/static/photos/novosibirsk/sabai10.jpg",
+              "/static/photos/novosibirsk/sabai11.jpg",
+              "/static/photos/novosibirsk/sabai12.jpg",
+            ],
+          }, 
+          {
             title: "Рестодворик",
             desc: "///",
             themes: ["yum", "popular", "restaurant"],
@@ -3311,8 +2985,62 @@
               "/static/photos/novosibirsk/restDv4.jpg",
             ],
           },
-=======
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
+          {
+            title: "brewsell",
+            desc: "///",
+            themes: ["yum", "popular", "restaurant", "secret"],
+            coords: [55.0000, 82.0000],
+            photos: [
+              "/static/photos/novosibirsk/br1.jpg",
+              "/static/photos/novosibirsk/br2.jpg",
+              "/static/photos/novosibirsk/br3.jpg",
+              "/static/photos/novosibirsk/br4.jpg",
+              "/static/photos/novosibirsk/br5.jpg",
+              "/static/photos/novosibirsk/br6.jpg",
+            ],
+            secret: true,
+          },
+          {
+            title: "Skuratov Coffee",
+            desc: "Ленина, 25",
+            themes: ["yum", "popular"],
+            coords: [55.0306, 82.9229],
+            photos: [
+              "/static/photos/skuratov.svg",
+            ],
+          },
+          {
+            title: "Оперный театр",
+            desc: "Красный проспект, 36",
+            themes: ["culture"],
+            coords: [55.0079, 82.8952],
+            photos: [
+              "/static/photos/novosibirsk/н1.jpg",
+              "/static/photos/novosibirsk/н2.jpg",
+              "/static/photos/novosibirsk/н3.jpg",
+            ],
+          },
+        ],
+        "china-beijing": [],
+        "china-zhangjiajie": [
+          {
+            title: "Zhangjiajie Grand Canyon",
+            desc: "",
+            themes: ["culture", "for-photos", "leisure"],
+            coords: [29.3430, 110.5466],
+            photos: [
+              "/static/photos/china/k1.png",
+              "/static/photos/china/k2.png",
+              "/static/photos/china/k3.png",
+              "/static/photos/china/k4.png",
+              "/static/photos/china/k5.png",
+              "/static/photos/china/k6.png",
+              "/static/photos/china/k7.png",
+              "/static/photos/china/k8.png",
+              "/static/photos/china/k9.png",
+              "/static/photos/china/k10.png",
+            ],
+          },
         ],
       };
 
@@ -3320,47 +3048,67 @@
       let currentPhotoIndex = 0;
       let currentCity = "novosibirsk";
       let currentTheme = "all";
-      let secretUnlocked = localStorage.getItem("secretLocationsUnlocked") === "true";
       let leafletMap = null; 
+
+      function isSecretPlace(place) {
+        return place.secret === true ||
+          place.title === "Neighborhood Bar" ||
+          place.title === "Презервативная";
+           place.title === "brewsell";
+      }
+
+      function getVisiblePlaces(city) {
+        const places = placesData[city] || [];
+        return secretUnlocked ? places : places.filter((place) => !isSecretPlace(place));
+      }
+
+      function toggleSecretLocations() {
+        secretUnlocked = !secretUnlocked;
+        localStorage.setItem("secretLocationsUnlocked", String(secretUnlocked));
+        const secretEyeBtn = document.getElementById("secretEyeBtn");
+        const secretFlash = document.getElementById("secretFlash");
+
+        if (secretEyeBtn) {
+          secretEyeBtn.classList.toggle("unlocked", secretUnlocked);
+        }
+
+        if (secretFlash) {
+          secretFlash.classList.remove("active");
+          void secretFlash.offsetWidth;
+          secretFlash.classList.add("active");
+          window.setTimeout(() => secretFlash.classList.remove("active"), 1000);
+        }
+
+        showPlaces(currentCity, currentTheme);
+        const mapView = document.getElementById("mapView");
+        if (mapView && mapView.classList.contains("active")) {
+          openMapView();
+        }
+      }
 
       function showPlaces(city, theme = null) {
         const placesList = document.getElementById("placesList");
-        const places = placesData[city] || [];
+        const places = getVisiblePlaces(city);
         let filteredPlaces = places;
-<<<<<<< HEAD
         if (theme && theme !== "all")
-=======
-        if (theme)
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
           filteredPlaces = places.filter(
             (p) =>
               p.theme === theme ||
               (Array.isArray(p.themes) && p.themes.includes(theme)),
           );
 
-        filteredPlaces = filteredPlaces.filter((p) => !p.secret || secretUnlocked);
         placesList.innerHTML = filteredPlaces.length
           ? filteredPlaces
               .map(
                 (p, index) => `
-<<<<<<< HEAD
                   <div class="place-card clickable-card" data-index="${index}" data-theme="${p.theme || (p.themes ? p.themes.join(",") : "")}" style="position: relative;">
                     <button class="save-location-btn" data-location="${p.title}" onclick="event.stopPropagation();">☆</button>
                     <img src="${normalizePhotos(p.photos)[0]}" alt="${p.title}" loading="lazy">
                     <div class="place-card-content">
-                      <div class="place-card-title">${p.title}</div>
+                      <div class="place-card-title">${p.title}${isSecretPlace(p) ? '<span class="secret-place-mark">¿</span>' : ''}</div>
                       <div class="place-card-desc">${p.desc}</div>
                     </div>
                   </div>`,
-=======
-            <div class="place-card clickable-card" data-index="${index}" data-theme="${p.theme || (p.themes ? p.themes.join(",") : "")}">
-             <img src="${normalizePhotos(p.photos)[0]}" alt="${p.title}" loading="lazy">
-              <div class="place-card-content">
-                <div class="place-card-title">${p.title}</div>
-                <div class="place-card-desc">${p.desc}</div>
-              </div>
-            </div>`,
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
               )
               .join("")
           : "<p>Локации в теме скоро появятся</p>";
@@ -3601,46 +3349,20 @@
 
       suggestBtn.onclick = (e) => {
         e.stopPropagation();
-        // clear previous values
-        const citySelect = document.getElementById("locationCity");
-        const titleField = document.getElementById("locationTitle");
-        const descField = document.getElementById("locationDesc");
-        const themeChecks = document.querySelectorAll(".theme-select");
-        const otherCheckboxEl = document.getElementById("themeOtherCheckbox");
-        const otherInputEl = document.getElementById("themeOtherInput");
-        if (citySelect) citySelect.value = "";
-        if (titleField) titleField.value = "";
-        if (descField) descField.value = "";
-        themeChecks.forEach((ch) => (ch.checked = false));
-        if (otherCheckboxEl) {
-          otherCheckboxEl.checked = false;
-        }
-        if (otherInputEl) {
-          otherInputEl.value = "";
-          otherInputEl.classList.add("hidden");
-        }
         locationModal.classList.remove("hidden");
         themesDropdown.classList.add("hidden");
         citiesDropdown.classList.add("hidden");
         burgerMenu.classList.remove("open");
       };
 
-<<<<<<< HEAD
       const userId = Number(document.body.dataset.userId) || null;
       const userName = document.body.dataset.userName || "Гость";
-=======
-      const user = tg.initDataUnsafe?.user || {
-        id: "guest",
-        username: "guest",
-      };
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
 
       cancelBtn.onclick = () => modal.classList.add("hidden");
       submitBtn.onclick = async () => {
         const newCity = document.getElementById("newCityName").value.trim();
         if (newCity) {
           try {
-<<<<<<< HEAD
             const res = await fetch("/api/suggest", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -3651,21 +3373,6 @@
                 nickname: currentNickname || userName,
               }),
             });
-=======
-            const res = await fetch(
-              "https://02081-production.up.railway.app/api/suggest",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  type: "city",
-                  city: newCity,
-                  user_id: user.id || "guest",
-                  nickname: currentNickname || "Гость",
-                }),
-              },
-            );
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
             if (res.ok) {
               alert("✅ Город отправлен на модерацию!");
               document.getElementById("newCityName").value = "";
@@ -3678,27 +3385,10 @@
       };
 
       locationCancel.onclick = () => locationModal.classList.add("hidden");
-
-      // toggle visibility of custom theme input
-      const themeOtherCheckbox = document.getElementById("themeOtherCheckbox");
-      const themeOtherInput = document.getElementById("themeOtherInput");
-      if (themeOtherCheckbox) {
-        themeOtherCheckbox.addEventListener("change", () => {
-          if (themeOtherCheckbox.checked) {
-            themeOtherInput.classList.remove("hidden");
-            themeOtherInput.focus();
-          } else {
-            themeOtherInput.classList.add("hidden");
-            themeOtherInput.value = "";
-          }
-        });
-      }
-
       locationSubmit.onclick = async () => {
         const citySelect = document.getElementById("locationCity");
         const title = document.getElementById("locationTitle").value.trim();
         const desc = document.getElementById("locationDesc").value.trim();
-<<<<<<< HEAD
         const photoInput = document.getElementById("locationPhotos");
         const photoFiles = Array.from(photoInput?.files || []);
         if (citySelect.value && title && desc) {
@@ -3727,48 +3417,6 @@
                 nickname: currentNickname || userName,
               }),
             });
-=======
-        if (citySelect.value && title && desc) {
-          // collect selected themes, excluding the "other" placeholder
-          const selected = Array.from(
-            document.querySelectorAll(".theme-select:checked"),
-          )
-            .map((el) => el.value)
-            .filter((v) => v !== "other");
-
-          // handle custom theme
-          const otherCheckbox = document.getElementById("themeOtherCheckbox");
-          const otherInput = document.getElementById("themeOtherInput");
-
-          if (otherCheckbox.checked) {
-            const otherVal = otherInput.value.trim();
-            if (!otherVal) {
-              alert(
-                "❗ Пожалуйста, заполните поле 'Другое' или снимите галочку.",
-              );
-              return;
-            }
-            selected.push(otherVal);
-          }
-
-          try {
-            const res = await fetch(
-              "https://02081-production.up.railway.app/api/suggest",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  type: "place",
-                  city: citySelect.value,
-                  title: title,
-                  description: desc,
-                  themes: selected,
-                  user_id: user.id || "guest",
-                  nickname: currentNickname || "Гость",
-                }),
-              },
-            );
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
             if (res.ok) {
               if (photoFiles.length) {
                 const photoForm = new FormData();
@@ -3785,14 +3433,10 @@
               citySelect.value = "";
               document.getElementById("locationTitle").value = "";
               document.getElementById("locationDesc").value = "";
-<<<<<<< HEAD
               document.getElementById("customTheme").value = "";
               if (photoInput) {
                 photoInput.value = "";
               }
-=======
-              // clear theme selection
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
               document
                 .querySelectorAll(".theme-select")
                 .forEach((c) => (c.checked = false));
@@ -3804,7 +3448,6 @@
         }
       };
 
-<<<<<<< HEAD
       async function initApp() {
         await loadFavorites();
         updateFavoritesList();
@@ -3820,234 +3463,6 @@
           }
         });
       });
-=======
-      showPlaces("novosibirsk", "popular");
-
-      // -------- меню / поиск / чат --------
-      const menuBtn = document.getElementById("menuBtn");
-      const menuPanel = document.getElementById("menuPanel");
-      const closeMenuBtn = document.getElementById("closeMenuBtn");
-      const tabChats = document.getElementById("tabChats");
-      const tabSearch = document.getElementById("tabSearch");
-      const chatsSection = document.getElementById("chatsSection");
-      const searchSection = document.getElementById("searchSection");
-      const userSearchInput = document.getElementById("userSearchInput");
-      const searchResults = document.getElementById("searchResults");
-
-      // функция поиска, вызываемая из нескольких мест
-      async function performUserSearch() {
-        const q = userSearchInput.value.trim();
-        if (!q) {
-          searchResults.innerHTML = "";
-          return;
-        }
-        try {
-          const res = await fetch(
-            `/api/search-users?q=${encodeURIComponent(q)}`,
-          );
-          const list = await res.json();
-          searchResults.innerHTML = "";
-          if (list.length === 0) {
-            searchResults.innerHTML = "<p>Ничего не найдено</p>";
-            return;
-          }
-          list.forEach((u) => {
-            const div = document.createElement("div");
-            div.className = "search-result";
-            div.textContent = u.nickname;
-            div.onclick = () => {
-              openChat(u.id, u.nickname);
-              menuPanel.classList.remove("visible");
-            };
-            searchResults.appendChild(div);
-          });
-        } catch (e) {
-          console.error(e);
-        }
-      }
-
-      // связываем события
-      userSearchInput.addEventListener("input", performUserSearch);
-      const userSearchBtn = document.getElementById("userSearchBtn");
-      userSearchBtn.addEventListener("click", performUserSearch);
-
-      // open first result when pressing Enter
-      userSearchInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          const first = searchResults.querySelector(".search-result");
-          if (first) first.click();
-        }
-      });
-      const chatsList = document.getElementById("chatsList");
-
-      // panel show/hide handled below in icon logic
-      closeMenuBtn.onclick = () => {
-        menuPanel.classList.remove("visible");
-        userSearchInput.value = "";
-        searchResults.innerHTML = "";
-      };
-
-      function switchTab(tab) {
-        if (tab === "chats") {
-          tabChats.classList.add("active");
-          tabSearch.classList.remove("active");
-          chatsSection.classList.add("active");
-          searchSection.classList.remove("active");
-        } else {
-          tabChats.classList.remove("active");
-          tabSearch.classList.add("active");
-          chatsSection.classList.remove("active");
-          searchSection.classList.add("active");
-          userSearchInput.focus();
-        }
-      }
-
-      tabChats.onclick = () => switchTab("chats");
-      tabSearch.onclick = () => switchTab("search");
-
-      // переключение через иконки
-      const menuIconsEl = document.getElementById("menuIcons");
-      const chatIconBtn = document.getElementById("chatIconBtn");
-      const searchIconBtn = document.getElementById("searchIconBtn");
-
-      menuBtn.onclick = (e) => {
-        e.stopPropagation();
-        // toggle icon dropdown panel
-        menuIconsEl.classList.toggle("hidden");
-      };
-      document.addEventListener("click", (e) => {
-        if (!menuBtn.contains(e.target) && !menuIconsEl.contains(e.target)) {
-          menuIconsEl.classList.add("hidden");
-        }
-      });
-      document.addEventListener("click", (e) => {
-        if (!menuBtn.contains(e.target) && !menuIconsEl.contains(e.target)) {
-          menuIconsEl.classList.add("hidden");
-        }
-      });
-
-      chatIconBtn.onclick = () => {
-        menuIconsEl.classList.add("hidden");
-        menuPanel.classList.add("visible");
-        switchTab("chats");
-        loadChats();
-      };
-      searchIconBtn.onclick = () => {
-        menuIconsEl.classList.add("hidden");
-        menuPanel.classList.add("visible");
-        switchTab("search");
-      };
-
-      // keep previous close behavior (clearing search is handled above)
-      closeMenuBtn.onclick = () => {
-        menuPanel.classList.remove("visible");
-        userSearchInput.value = "";
-        searchResults.innerHTML = "";
-        menuIconsEl.classList.add("hidden");
-      };
-
-      async function loadChats() {
-        const res = await fetch(`/api/friends/${user.id}`);
-        const list = await res.json();
-        if (list.length === 0) {
-          chatsList.innerHTML = "<p>Нет друзей</p>";
-          return;
-        }
-        chatsList.innerHTML = "";
-        list.forEach((f) => {
-          const div = document.createElement("div");
-          div.className = "chat-item";
-          div.textContent = f.nickname;
-          div.onclick = () => openChat(f.id, f.nickname);
-          chatsList.appendChild(div);
-        });
-      }
-
-      let currentChat = null;
-      async function openChat(otherId, otherNick) {
-        currentChat = { id: otherId, nickname: otherNick };
-        // simple chat overlay
-        const chatOverlay = document.createElement("div");
-        chatOverlay.className = "menu-panel visible";
-        chatOverlay.innerHTML = `
-          <div class="panel-content">
-            <h3>Чат с ${otherNick}</h3>
-            <div id="messagesContainer" style="max-height:300px;overflow-y:auto;margin-bottom:8px;"></div>
-            <textarea id="msgInput" style="width:100%;height:60px;"></textarea>
-            <button id="sendMsgBtn" class="btn primary" style="margin-top:8px;">Отправить</button>
-            <button id="closeChatBtn" class="btn secondary" style="margin-top:8px;">Закрыть</button>
-          </div>
-        `;
-        document.body.appendChild(chatOverlay);
-        document.getElementById("closeChatBtn").onclick = () =>
-          document.body.removeChild(chatOverlay);
-        document.getElementById("sendMsgBtn").onclick = sendMessage;
-        await refreshMessages();
-      }
-
-      async function refreshMessages() {
-        if (!currentChat) return;
-        const res = await fetch(`/api/messages/${user.id}/${currentChat.id}`);
-        const msgs = await res.json();
-        const container = document.getElementById("messagesContainer");
-        container.innerHTML = "";
-        msgs.forEach((m) => {
-          const p = document.createElement("p");
-          p.textContent = `${m.sender === user.id ? "Я" : currentChat.nickname}: ${m.text}`;
-          container.appendChild(p);
-        });
-        container.scrollTop = container.scrollHeight;
-      }
-
-      async function sendMessage() {
-        const txt = document.getElementById("msgInput").value.trim();
-        if (!txt) return;
-        await fetch("/api/send-message", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            sender_id: user.id,
-            receiver_id: currentChat.id,
-            text: txt,
-          }),
-        });
-        document.getElementById("msgInput").value = "";
-        await refreshMessages();
-      }
-
-      userSearchInput.oninput = async () => {
-        const q = userSearchInput.value.trim();
-        if (!q) {
-          searchResults.innerHTML = "";
-          return;
-        }
-        const res = await fetch(`/api/search-users?q=${encodeURIComponent(q)}`);
-        const candidates = await res.json();
-        searchResults.innerHTML = "";
-        candidates.forEach((u) => {
-          if (u.id === user.id) return;
-          const div = document.createElement("div");
-          div.className = "search-result";
-          div.textContent = u.nickname;
-          const btn = document.createElement("button");
-          btn.className = "action-btn";
-          btn.textContent = "Добавить";
-          btn.onclick = async () => {
-            await fetch("/api/friend-request", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                sender_id: user.id,
-                receiver_id: u.id,
-              }),
-            });
-            alert("Запрос отправлен / дружба добавлена");
-          };
-          div.appendChild(btn);
-          searchResults.appendChild(div);
-        });
-      };
->>>>>>> f7b72ac90dfe668b0bdbed3e54cea5cbb549e539
     </script>
   </body>
 </html>
