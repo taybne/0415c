@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ c.title }} — подборка в TAG</title>
+{% if allowed %}
+<meta name="description" content="{{ (c.description or 'Подборка мест от ' ~ c.owner.nickname) }} · {{ items|length }} мест">
+<meta property="og:title" content="{{ c.title }} — TAG">
+<meta property="og:description" content="{{ (c.description or 'Подборка мест от ' ~ c.owner.nickname) }} · {{ items|length }} мест">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ share_url }}">
+{% set cover = items|selectattr('photo')|map(attribute='photo')|first %}
+{% if cover %}<meta property="og:image" content="{{ request.url_root.rstrip('/') ~ cover if cover.startswith('/') else cover }}">{% endif %}
+{% else %}
+<meta name="robots" content="noindex">
+{% endif %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{--bg:#120d16;--card:#1d1623;--ink:#f7eef5;--mute:#b9a8b5;--neon:#ff9ec7;--glow:rgba(255,158,199,.35)}
+*{box-sizing:border-box;margin:0}
+body{font-family:-apple-system,"SF Pro Display",system-ui,"Segoe UI",sans-serif;background:radial-gradient(1200px 600px at 50% -200px,#3a1730 0,var(--bg) 60%) fixed;color:var(--ink);min-height:100vh}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 120px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font-weight:800;letter-spacing:.14em;color:var(--neon);text-shadow:0 0 14px var(--glow);text-decoration:none}
+.btn{display:inline-block;padding:11px 18px;border-radius:14px;background:linear-gradient(135deg,#ff9ec7,#e88bd8);color:#2a0b1b;font-weight:700;text-decoration:none;border:none;font:inherit;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--glow)}
+.hero{padding:26px 0 18px}
+.hero small{color:var(--neon);letter-spacing:.08em;text-transform:uppercase;font-weight:700;font-size:12px}
+.hero h1{font-size:clamp(28px,7vw,44px);line-height:1.1;margin:8px 0 10px}
+.hero p{color:var(--mute);font-size:17px;line-height:1.5}
+.meta{margin-top:12px;color:var(--mute);font-size:14px}
+#map{height:260px;border-radius:20px;margin:18px 0;border:1px solid var(--glow);box-shadow:0 0 30px rgba(255,158,199,.12)}
+.item{background:var(--card);border-radius:20px;overflow:hidden;margin-bottom:16px;border:1px solid rgba(255,255,255,.05)}
+.item img{width:100%;height:210px;object-fit:cover;display:block}
+.item .b{padding:14px 16px 16px}
+.item .n{display:inline-flex;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;background:var(--neon);color:#2a0b1b;font-weight:800;font-size:13px;margin-right:8px}
+.item h3{font-size:19px;display:flex;align-items:center}
+.item .city{color:var(--neon);font-size:13px;margin:4px 0 6px}
+.item p{color:var(--mute);line-height:1.5;font-size:15px}
+.item a.map{display:inline-block;margin-top:10px;color:var(--neon);text-decoration:none;font-weight:600;font-size:14px}
+.cta{position:fixed;left:0;right:0;bottom:0;padding:14px 16px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(to top,var(--bg) 60%,transparent);text-align:center}
+.cta .in{max-width:760px;margin:0 auto;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}
+.cta span{color:var(--mute);font-size:14px}
+.lock{text-align:center;padding:70px 10px}
+.lock .e{font-size:54px}
+.lock h2{margin:14px 0 8px}.lock p{color:var(--mute);margin-bottom:20px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="logo" href="/">TAG</a>
+    {% if viewer %}<a class="btn ghost" href="/collections">Мои коллекции</a>{% else %}<a class="btn ghost" href="/login">Войти</a>{% endif %}
+  </div>
+
+{% if allowed %}
+  <div class="hero">
+    <small>Подборка · {{ {'public':'публичная','friends':'для друзей','private':'приватная'}[c.privacy] }}</small>
+    <h1>{{ c.title }}</h1>
+    {% if c.description %}<p>{{ c.description }}</p>{% endif %}
+    <div class="meta">от <b>{{ c.owner.nickname }}</b> · {{ items|length }} {{ 'место' if items|length == 1 else 'мест' }}</div>
+  </div>
+  {% if items|selectattr('lat')|list %}<div id="map"></div>{% endif %}
+  {% for i in items %}
+  <div class="item">
+    {% if i.photo %}<img src="{{ i.photo }}" alt="{{ i.title }}" loading="lazy">{% endif %}
+    <div class="b">
+      <h3><span class="n">{{ loop.index }}</span>{{ i.title }}</h3>
+      {% if i.city %}<div class="city">{{ i.city }}</div>{% endif %}
+      {% if i.description %}<p>{{ i.description }}</p>{% endif %}
+      {% if i.lat and i.lon %}<a class="map" target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat={{ i.lat }}&mlon={{ i.lon }}#map=16/{{ i.lat }}/{{ i.lon }}">🗺 Показать на карте</a>{% endif %}
+    </div>
+  </div>
+  {% else %}
+  <p style="color:var(--mute);padding:30px 0">В подборке пока нет мест.</p>
+  {% endfor %}
+  <div class="cta"><div class="in">
+    {% if viewer %}<a class="btn" href="/">Открыть TAG</a>
+    {% else %}<span>Понравилось? Все эти места — в приложении TAG</span><a class="btn" href="/register">Присоединиться</a>{% endif %}
+    <button class="btn ghost" id="copy">Скопировать ссылку</button>
+  </div></div>
+{% else %}
+  <div class="lock">
+    <div class="e">🔒</div>
+    <h2>{{ 'Эта подборка только для друзей' if reason == 'friends' else 'Эта подборка приватная' }}</h2>
+    <p>{% if viewer %}У вас нет доступа к ней. Попросите автора отправить её вам в чате TAG.{% else %}Войдите в свой аккаунт — возможно, автор уже поделился ею с вами.{% endif %}</p>
+    {% if not viewer %}<a class="btn" href="/login">Войти</a> <a class="btn ghost" href="/register">Создать аккаунт</a>{% else %}<a class="btn" href="/">В TAG</a>{% endif %}
+  </div>
+{% endif %}
+</div>
+{% if allowed %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function(){
+  var pts = {{ pts|tojson }};
+  var el = document.getElementById('map');
+  if (el && pts.length && window.L) {
+    var m = L.map(el, {scrollWheelZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(m);
+    var b = [];
+    pts.forEach(function(p,i){ L.marker([p.lat,p.lon]).addTo(m).bindPopup((i+1)+'. '+p.title.replace(/</g,'&lt;')); b.push([p.lat,p.lon]); });
+    m.fitBounds(b,{padding:[30,30],maxZoom:15});
+  }
+  var cp = document.getElementById('copy');
+  if (cp) cp.onclick = function(){ navigator.clipboard.writeText({{ share_url|tojson }}).then(function(){cp.textContent='Скопировано ✓';setTimeout(function(){cp.textContent='Скопировать ссылку'},1800)}); };
+})();
+</script>
+{% endif %}
+</body>
+</html>

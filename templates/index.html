@@ -1707,8 +1707,6 @@
               </button>
               <button class="city-chip" data-city="moscow">Москва</button>
               <button class="city-chip" data-city="spb">Санкт-Петербург</button>
-              <button class="city-chip" data-city="china-beijing">China-beijing</button>
-              <button class="city-chip" data-city="china-zhangjiajie">China-zhangjiajie</button>
               <button class="city-chip add-city" data-city="add">
                 ➕ Добавить город
               </button>
@@ -2238,8 +2236,6 @@
           novosibirsk: "Novosibirsk",
           moscow: "Moscow",
           spb: "Saint Petersburg",
-          "china-beijing": "China-beijing",
-          "china-zhangjiajie": "China-zhangjiajie",
         };
         document.getElementById("mapViewTitle").textContent =
           "Map - " + (cityNames[currentCity] || "City");
@@ -2263,8 +2259,6 @@
               novosibirsk: [55.0415, 82.9346],
               moscow: [55.7558, 37.6173],
               spb: [59.9311, 30.3609],
-              "china-beijing": [39.9042, 116.4074],
-              "china-zhangjiajie": [29.1170, 110.4799],
             };
 
             const centerCoords = cityCoordinates[currentCity] || [55.0415, 82.9346];
@@ -2598,7 +2592,7 @@
             ],
           },
          {
-            title: "SIXTY",
+            title: "ресторан SIXTY",
             desc: "один из самых высоких ресторанов в Европе",
             themes: ["restaurant", "yum", "for photos"],
             coords: [55.7492, 37.5286],
@@ -2620,41 +2614,6 @@
               "/static/photos/moscow/360.2.jpg",
               "/static/photos/moscow/360.3.jpg",
               "/static/photos/moscow/360.4.jpg",
-            ],
-          },
-          {
-            title: "La Virgen",
-            desc: "Лубянский пр-д, 5с1",
-            themes: ["restaurant", "yum"],
-            coords: [55.7492, 37.5286],
-            photos: [
-              "/static/photos/moscow/v1.png",
-              "/static/photos/moscow/v2.png",
-              "/static/photos/moscow/v3.png",
-              "/static/photos/moscow/v4.png",
-              "/static/photos/moscow/v5.png",
-              "/static/photos/moscow/v6.png",
-              "/static/photos/moscow/v7.png",
-              "/static/photos/moscow/v8.png",
-              "/static/photos/moscow/v9.png",
-              "/static/photos/moscow/v10.png",
-            ],
-          },
-          {
-            title: "чайная дом белого журавля",
-            desc: "",
-            themes: ["restaurant", "yum", "leisure"],
-            coords: [55.7492, 37.5286],
-            photos: [
-              "/static/photos/moscow/c1.png",
-              "/static/photos/moscow/c2.png",
-              "/static/photos/moscow/c3.png",
-              "/static/photos/moscow/c4.jpg",
-              "/static/photos/moscow/c5.png",
-              "/static/photos/moscow/c6.jpg",
-              "/static/photos/moscow/c7.jpg",
-              "/static/photos/moscow/c8.png",
-              "/static/photos/moscow/c9.jpg",
             ],
           },
           {
@@ -2920,6 +2879,17 @@
             ],
           },
           {
+            title: "Оперный театр",
+            desc: "Красный проспект, 36",
+            themes: ["culture"],
+            coords: [55.0079, 82.8952],
+            photos: [
+              "/static/photos/novosibirsk/н1.jpg",
+              "/static/photos/novosibirsk/н2.jpg",
+              "/static/photos/novosibirsk/н3.jpg",
+            ],
+          },
+          {
             title: "Raccoon Cafe",
             desc: "ул. Галущака, 4",
             themes: ["popular", "leisure"],
@@ -2932,50 +2902,6 @@
             ],
           },
           {
-          title: "аджикинежаль",
-            desc: "//грузинский ресторан/ Пл.Карла Маркса, 1/1| Красный проспект, 157/1| красный проспект 37| Ватутина, 107| Ильича, 6",
-            themes: ["yum", "restaurant"],
-            coords: [55.0150, 82.8950],
-            photos: [
-              "/static/photos/novosibirsk/Akm3.jpg",
-              "/static/photos/novosibirsk/Akm1.jpg",
-              "/static/photos/novosibirsk/Akm2.jpg",
-              "/static/photos/novosibirsk/Akm4.jpg",
-              "/static/photos/novosibirsk/Akm5.jpg",
-              "/static/photos/novosibirsk/Akm6.jpg",
-              "/static/photos/novosibirsk/Akr37.jpg",
-              "/static/photos/novosibirsk/Akr37.2.jpg",
-              "/static/photos/novosibirsk/Akr37.3.jpg",
-              "/static/photos/novosibirsk/Akr37.4.jpg",
-              "/static/photos/novosibirsk/Akr157.jpg",
-              "/static/photos/novosibirsk/Akr157.2.jpg",
-              "/static/photos/novosibirsk/Av107.jpg",
-              "/static/photos/novosibirsk/Av107.2.jpg",
-              "/static/photos/novosibirsk/Ai6.jpg",
-              "/static/photos/novosibirsk/Ai6.2.jpg",
-            ],
-          }, 
-          {
-          title: "sabai",
-            desc: "///Щетинкина, 18; Перевозчикова, 4; Академгородок: ул. Инженерная, 7",
-            themes: ["yum", "restaurant"],
-            coords: [55.060663, 82.908949],  
-            photos: [
-              "/static/photos/novosibirsk/sabai.jpg",
-              "/static/photos/novosibirsk/sabai2.jpg",
-              "/static/photos/novosibirsk/sabai3.jpg",
-              "/static/photos/novosibirsk/sabai4.jpg",
-              "/static/photos/novosibirsk/sabai5.jpg",
-              "/static/photos/novosibirsk/sabai6.jpg",
-              "/static/photos/novosibirsk/sabai7.jpg",
-              "/static/photos/novosibirsk/sabai8.jpg",
-              "/static/photos/novosibirsk/sabai9.jpg",
-              "/static/photos/novosibirsk/sabai10.jpg",
-              "/static/photos/novosibirsk/sabai11.jpg",
-              "/static/photos/novosibirsk/sabai12.jpg",
-            ],
-          }, 
-          {
             title: "Рестодворик",
             desc: "///",
             themes: ["yum", "popular", "restaurant"],
@@ -2986,59 +2912,12 @@
             ],
           },
           {
-            title: "brewsell",
-            desc: "///",
-            themes: ["yum", "popular", "restaurant", "secret"],
-            coords: [55.0000, 82.0000],
-            photos: [
-              "/static/photos/novosibirsk/br1.jpg",
-              "/static/photos/novosibirsk/br2.jpg",
-              "/static/photos/novosibirsk/br3.jpg",
-              "/static/photos/novosibirsk/br4.jpg",
-              "/static/photos/novosibirsk/br5.jpg",
-              "/static/photos/novosibirsk/br6.jpg",
-            ],
-            secret: true,
-          },
-          {
             title: "Skuratov Coffee",
             desc: "Ленина, 25",
             themes: ["yum", "popular"],
             coords: [55.0306, 82.9229],
             photos: [
               "/static/photos/skuratov.svg",
-            ],
-          },
-          {
-            title: "Оперный театр",
-            desc: "Красный проспект, 36",
-            themes: ["culture"],
-            coords: [55.0079, 82.8952],
-            photos: [
-              "/static/photos/novosibirsk/н1.jpg",
-              "/static/photos/novosibirsk/н2.jpg",
-              "/static/photos/novosibirsk/н3.jpg",
-            ],
-          },
-        ],
-        "china-beijing": [],
-        "china-zhangjiajie": [
-          {
-            title: "Zhangjiajie Grand Canyon",
-            desc: "",
-            themes: ["culture", "for-photos", "leisure"],
-            coords: [29.3430, 110.5466],
-            photos: [
-              "/static/photos/china/k1.png",
-              "/static/photos/china/k2.png",
-              "/static/photos/china/k3.png",
-              "/static/photos/china/k4.png",
-              "/static/photos/china/k5.png",
-              "/static/photos/china/k6.png",
-              "/static/photos/china/k7.png",
-              "/static/photos/china/k8.png",
-              "/static/photos/china/k9.png",
-              "/static/photos/china/k10.png",
             ],
           },
         ],
@@ -3054,7 +2933,6 @@
         return place.secret === true ||
           place.title === "Neighborhood Bar" ||
           place.title === "Презервативная";
-           place.title === "brewsell";
       }
 
       function getVisiblePlaces(city) {

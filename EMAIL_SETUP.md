@@ -37,7 +37,7 @@ python bot.py &
 ### 5. Тестирование
 
 1. Перейдите на http://127.0.0.1:5000/register
-2. Введите nickname
+2. Введите telegram username (без @), nickname и пароль
 3. Нажмите "Register"
 4. Напишите боту `/verify ваш_никнейм`
 5. Введите код на сайте

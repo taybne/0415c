@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Коллекции — TAG</title>
+<link rel="stylesheet" href="/static/social.css">
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:-apple-system,"SF Pro Display",system-ui,"Segoe UI",sans-serif;background:#1a1a1a;color:#f4eef2}
+.app{max-width:560px;margin:0 auto;min-height:100vh;background:#241c28;padding-bottom:40px}
+.hd{background:#ffb6d9;color:#3a1128;padding:18px 16px;display:flex;align-items:center;gap:12px}
+.hd a{color:inherit;text-decoration:none;font-weight:700}.hd h1{font-size:20px;flex:1}
+.pad{padding:16px}
+h2{font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:#ffb6d9;margin:22px 0 10px}
+.card{background:#2f2535;border-radius:18px;padding:14px;margin-bottom:12px}
+.card .top{display:flex;gap:12px;align-items:center;cursor:pointer}
+.cover{width:56px;height:56px;border-radius:14px;object-fit:cover;background:#3b2f43;flex:none;display:flex;align-items:center;justify-content:center;font-size:24px}
+.card .t{flex:1;min-width:0}.card .t b{display:block}
+.detail{margin-top:12px;border-top:1px solid rgba(255,255,255,.1);padding-top:12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.it{display:flex;gap:10px;align-items:center;padding:8px 0}
+.it img{width:44px;height:44px;border-radius:10px;object-fit:cover}
+.it .x{margin-left:auto;background:none;border:none;color:inherit;opacity:.6;cursor:pointer;font-size:16px}
+select.sx-input,input.sx-input{margin-bottom:8px}
+label.chk{display:flex;gap:8px;align-items:center;font-size:14px;margin:6px 0}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hd"><a href="/">← Назад</a><h1>⭐ Коллекции</h1></div>
+  <div class="pad">
+    <div class="card">
+      <div class="sx-form">
+        <b>Новая коллекция</b>
+        <input class="sx-input" id="nTitle" maxlength="120" placeholder="Например: Places to visit before 25">
+        <input class="sx-input" id="nDesc" maxlength="500" placeholder="Описание (необязательно)">
+        <select class="sx-input" id="nPriv"><option value="private">🔒 Приватная — только я</option><option value="friends">👥 Только друзья</option><option value="public">🌍 Публичная — по ссылке видят все</option></select>
+        <button class="sx-btn primary" id="nCreate">Создать</button>
+        <div class="sx-muted">Идеи: My favorite coffee spots · Architecture in Berlin · Perfect date locations · Secret places in my city · Summer memories</div>
+      </div>
+    </div>
+    <div id="invited"></div>
+    <h2>Мои коллекции</h2><div id="mine"></div>
+    <h2>Совместные со мной</h2><div id="joined"></div>
+    <h2>Публичные подборки</h2><div id="pub"></div>
+  </div>
+</div>
+<script src="/static/social.js"></script>
+<script>
+const S = SOCIAL, esc = S.esc;
+const PR = {public:"🌍 Публичная", friends:"👥 Друзья", private:"🔒 Приватная"};
+let openId = Number((location.hash.match(/c(\d+)/)||[])[1]) || null;
+
+function head(c, own){
+  return '<div class="top"><div class="cover">'+(c.cover?'<img class="cover" src="'+esc(c.cover)+'">':'🗂')+'</div><div class="t"><b>'+esc(c.title)+'</b><span class="sx-muted">'+PR[c.privacy]+' · '+c.count+' мест'+(c.collaborative?' · 🤝 совместная':'')+(own?'':' · от '+esc(c.owner.nickname))+'</span></div></div>';
+}
+async function load(){
+  const d = await S.api("/api/collections");
+  if (d.error) return;
+  const inv = document.getElementById("invited");
+  inv.innerHTML = (d.invited||[]).map(c=>'<div class="card"><b>🤝 Вас зовут в «'+esc(c.title)+'»</b><div class="sx-muted">'+esc(c.owner.nickname)+'</div><div class="row"><button class="sx-btn primary" data-r="1" data-id="'+c.id+'">Присоединиться</button><button class="sx-btn ghost" data-r="0" data-id="'+c.id+'">Нет</button></div></div>').join("");
+  inv.querySelectorAll("button").forEach(b=>b.onclick=async()=>{await S.post("/api/collections/"+b.dataset.id+"/respond",{accept:b.dataset.r==="1"});load();});
+  draw("mine", d.mine, true); draw("joined", d.joined, false);
+  const p = await S.api("/api/collections/public");
+  draw("pub", Array.isArray(p)?p:[], false, true);
+}
+function draw(id, list, own, readonly){
+  const box = document.getElementById(id);
+  box.innerHTML = list.length ? "" : '<div class="sx-muted">Пока пусто</div>';
+  list.forEach(c=>{
+    const el = document.createElement("div"); el.className = "card"; el.id = (readonly?"p":"c")+c.id;
+    el.innerHTML = head(c, own);
+    const toggle = async()=>{
+      if (el.querySelector(".detail")) { el.querySelector(".detail").remove(); openId=null; return; }
+      openId = c.id; await detail(el, c, own, readonly);
+    };
+    el.querySelector(".top").onclick = toggle;
+    box.appendChild(el);
+    if (openId === c.id && !readonly) detail(el, c, own, readonly);
+  });
+}
+async function detail(el, c, own, readonly){
+  const f = await S.api("/api/collections/"+c.id);
+  if (f.error) return;
+  const d = document.createElement("div"); d.className = "detail";
+  let h = f.description ? '<div class="sx-muted" style="margin-bottom:6px">'+esc(f.description)+'</div>' : "";
+  h += (f.items||[]).map(i=>'<div class="it">'+(i.photo?'<img src="'+esc(i.photo)+'">':'')+'<div><b>'+esc(i.title)+'</b><div class="sx-muted">'+esc(i.city)+'</div></div>'+(f.can_edit&&!readonly?'<button class="x" data-k="'+esc(i.place_key)+'" title="Убрать">✕</button>':'')+'</div>').join("") || '<div class="sx-muted">Мест пока нет. Нажмите ☆ на карточке места в ленте.</div>';
+  h += '<div class="row"><a class="sx-btn ghost" style="text-decoration:none;color:inherit" target="_blank" href="/c/'+f.token+'">👁 Веб-страница</a><button class="sx-btn ghost" data-a="copy">🔗 Ссылка</button><button class="sx-btn" data-a="send">📤 Отправить</button></div>';
+  if (f.is_owner && !readonly) {
+    h += '<div class="sx-section"><input class="sx-input" id="eT" value="'+esc(f.title)+'" maxlength="120"><input class="sx-input" id="eD" value="'+esc(f.description)+'" maxlength="500" placeholder="Описание"><select class="sx-input" id="eP">'+Object.keys(PR).map(k=>'<option value="'+k+'"'+(k===f.privacy?' selected':'')+'>'+PR[k]+'</option>').join("")+'</select><div class="row"><button class="sx-btn" data-a="save">Сохранить</button><button class="sx-btn ghost" data-a="invite">🤝 Позвать друга</button><button class="sx-btn ghost" data-a="reset">♻ Новая ссылка</button><button class="sx-btn ghost" data-a="del">🗑 Удалить</button></div>'+((f.members||[]).length?'<div class="sx-muted">Участники: '+f.members.map(m=>esc(m.user.nickname)+(m.status==="invited"?" (ждём)":"")).join(", ")+'</div>':'')+'</div>';
+  }
+  d.innerHTML = h; el.appendChild(d);
+  d.querySelectorAll(".x").forEach(b=>b.onclick=async()=>{await S.post("/api/collections/"+c.id+"/items",{place_key:b.dataset.k},"DELETE");load();});
+  d.querySelectorAll("[data-a]").forEach(b=>b.onclick=async()=>{
+    const a=b.dataset.a;
+    if(a==="copy"){const u=location.origin+"/c/"+f.token;try{await navigator.clipboard.writeText(u);S.toast("Ссылка скопирована");}catch(e){prompt("Скопируйте ссылку",u);} if(f.privacy==="private")S.toast("Коллекция приватная: по ссылке её увидят только вы и те, кому вы её отправили");}
+    else if(a==="send") S.shareCollection(f);
+    else if(a==="save"){const r=await S.post("/api/collections/"+c.id,{title:d.querySelector("#eT").value,description:d.querySelector("#eD").value,privacy:d.querySelector("#eP").value},"PATCH");S.toast(r.error||"Сохранено ✓");load();}
+    else if(a==="reset"){if(confirm("Старая ссылка перестанет работать. Продолжить?")){await S.post("/api/collections/"+c.id,{reset_link:true},"PATCH");S.toast("Ссылка обновлена");load();}}
+    else if(a==="del"){if(confirm("Удалить коллекцию?")){await S.api("/api/collections/"+c.id,{method:"DELETE"});openId=null;load();}}
+    else if(a==="invite"){const ids=await S.pickPeople("Позвать в совместную подборку","Друзья смогут добавлять места","Позвать");if(ids)for(const i of ids){const r=await S.post("/api/collections/"+c.id+"/invite",{user_id:i});if(r.error)S.toast(r.error);}S.toast("Приглашения отправлены");load();}
+  });
+}
+document.getElementById("nCreate").onclick = async()=>{
+  const title=document.getElementById("nTitle").value.trim();
+  if(!title) return S.toast("Введите название");
+  const r=await S.post("/api/collections",{title,description:document.getElementById("nDesc").value,privacy:document.getElementById("nPriv").value});
+  if(r.error) return S.toast(r.error);
+  document.getElementById("nTitle").value="";document.getElementById("nDesc").value="";
+  openId=r.collection.id;load();
+};
+load();
+</script>
+</body>
+</html>

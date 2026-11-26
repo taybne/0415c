@@ -1,32 +1,63 @@
 #!/usr/bin/env python
-"""Delete accounts by nickname: python delete_accounts.py nick1 nick2 ..."""
+"""Script to delete accounts by email and nickname"""
+
 import sys
 import os
 sys.path.insert(0, os.path.dirname(__file__))
 
-from app import app, db, User, PrivateMessage, SavedLocation, FavoriteLocation, FriendRequest
+from app import app, db, User, PrivateMessage
 
+def delete_account_by_email(email):
+    """Delete account by email"""
+    with app.app_context():
+        user = User.query.filter_by(email=email).first()
+        if user:
+            user_id = user.id
+            print(f"Found user: {user.nickname} ({user.email})")
+            
+            # Delete all messages associated with this user
+            PrivateMessage.query.filter(
+                (PrivateMessage.sender_id == user_id) | (PrivateMessage.receiver_id == user_id)
+            ).delete(synchronize_session=False)
+            print(f"Deleted {PrivateMessage.query.count()} messages")
+            
+            # Delete the user
+            db.session.delete(user)
+            db.session.commit()
+            print(f"✅ Account deleted: {user.nickname} ({email})")
+            return True
+        else:
+            print(f"❌ Account not found: {email}")
+            return False
 
 def delete_account_by_nickname(nickname):
+    """Delete account by nickname"""
     with app.app_context():
         user = User.query.filter_by(nickname=nickname).first()
-        if not user:
-            print(f"Not found: {nickname}")
+        if user:
+            user_id = user.id
+            print(f"Found user: {user.nickname} ({user.email})")
+            
+            # Delete all messages associated with this user
+            PrivateMessage.query.filter(
+                (PrivateMessage.sender_id == user_id) | (PrivateMessage.receiver_id == user_id)
+            ).delete(synchronize_session=False)
+            print(f"Deleted messages")
+            
+            # Delete the user
+            db.session.delete(user)
+            db.session.commit()
+            print(f"✅ Account deleted: {user.nickname} ({user.email})")
+            return True
+        else:
+            print(f"❌ Account not found: {nickname}")
             return False
-        uid = user.id
-        PrivateMessage.query.filter((PrivateMessage.sender_id == uid) | (PrivateMessage.receiver_id == uid)).delete(synchronize_session=False)
-        FriendRequest.query.filter((FriendRequest.sender_id == uid) | (FriendRequest.receiver_id == uid)).delete(synchronize_session=False)
-        SavedLocation.query.filter_by(user_id=uid).delete(synchronize_session=False)
-        FavoriteLocation.query.filter_by(user_id=uid).delete(synchronize_session=False)
-        db.session.delete(user)
-        db.session.commit()
-        print(f"Deleted: {nickname}")
-        return True
-
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Usage: python delete_accounts.py <nickname> [<nickname> ...]")
-        sys.exit(1)
-    for n in sys.argv[1:]:
-        delete_account_by_nickname(n)
+    print("🗑️  Deleting accounts...\n")
+    
+    # Delete by email
+    delete_account_by_email('faustovataisia@yandex.ru')
+    print()
+    
+    print("✅ Done!")
